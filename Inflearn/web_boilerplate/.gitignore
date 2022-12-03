@@ -1,6 +1,2 @@
 node_modules/
-
-# 왜 node_modules에서 LF/CRLF 에러나는지 모르겠음.
-# 1. 이전에 한 add가 적용되서 그러는건지
-# 2. .gitignore이 적용이 안되는건지
-# .gitignore 적용했으면 에러뜨면 안되는거 아님?
+server/config/dev.js
