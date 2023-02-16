@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { useEffect } from "react";
 import { FaCode } from "react-icons/fa";
+import axios from "axios";
 
 function LandingPage() {
-    return (
-        <>
-            <div className="app">
-                <FaCode style={{ fontSize: '4rem' }} /><br />
-                <span style={{ fontSize: '2rem' }}>Let's Start Coding!</span>
-            </div>
-            <div style={{ float: 'right' }}>Thanks For Using This Boiler Plate by John Ahn</div>
-        </>
-    )
+  useEffect(() => {
+    let body = {};
+
+    axios.post("/api/product/products").then((res) => {
+      if (res.data.success) {
+        console.log(res.data);
+      } else {
+        alert("Failed to bring products");
+      }
+    });
+  }, []);
+
+  return <div></div>;
 }
 
-export default LandingPage
+export default LandingPage;
