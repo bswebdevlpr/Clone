@@ -3,12 +3,18 @@ import { FaCode } from "react-icons/fa";
 import axios from "axios";
 import { Icon, Col, Card, Row, Carousel } from "antd";
 import ImageSlider from "../../utils/ImageSlider";
+import CheckBox from "./Sections/CheckBox";
+import { continents } from "./Sections/Datas";
 
 function LandingPage() {
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(1);
   const [PostSize, setPostSize] = useState(0);
+  const [Filters, setFilters] = useState({
+    continents: [],
+    price: [],
+  });
 
   const renderCards = Products.map((product, index) => {
     return (
@@ -58,6 +64,26 @@ function LandingPage() {
     setSkip(skip);
   };
 
+  const showFilteredResults = (filters) => {
+    let body = {
+      skip: 0,
+      limit: Limit,
+      loadMore: true,
+      filters: filters,
+    };
+
+    getProducts(body);
+    setSkip(0);
+  };
+
+  const handleFilters = (filters, category) => {
+    const newFilters = { ...Filters };
+
+    newFilters[category] = filters;
+
+    showFilteredResults(newFilters);
+  };
+
   return (
     <div style={{ width: "75%", margin: "3rem auto" }}>
       <div style={{ textAlign: "center" }}>
@@ -65,6 +91,14 @@ function LandingPage() {
           Enjoy your jazzy life <Icon type="rocket" />
         </h2>
       </div>
+
+      {/* CHECKBOX */}
+      <CheckBox
+        list={continents}
+        handleFilters={(filters) => handleFilters(filters, "continents")}
+      />
+
+      {/* RADIOBOX */}
 
       <Row gutter={[16, 16]}>{renderCards}</Row>
 
