@@ -9,21 +9,11 @@ import { continents } from "./Sections/Datas";
 function LandingPage() {
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
-  const [Limit, setLimit] = useState(1);
+  const [Limit, setLimit] = useState(2);
   const [PostSize, setPostSize] = useState(0);
   const [Filters, setFilters] = useState({
     continents: [],
     price: [],
-  });
-
-  const renderCards = Products.map((product, index) => {
-    return (
-      <Col lg={6} md={8} xs={24} key={index}>
-        <Card cover={<ImageSlider images={product.images} />}>
-          <meta title={product.title} description={`${product.price}`} />
-        </Card>
-      </Col>
-    );
   });
 
   useEffect(() => {
@@ -34,6 +24,16 @@ function LandingPage() {
 
     getProducts(body);
   }, []);
+
+  const renderCards = Products.map((product, index) => {
+    return (
+      <Col lg={6} md={8} xs={24} key={index}>
+        <Card cover={<ImageSlider images={product.images} />}>
+          <meta title={product.title} description={`${product.price}`} />
+        </Card>
+      </Col>
+    );
+  });
 
   const getProducts = (body) => {
     axios.post("/api/product/products", body).then((res) => {
@@ -68,9 +68,10 @@ function LandingPage() {
     let body = {
       skip: 0,
       limit: Limit,
-      loadMore: true,
       filters: filters,
     };
+
+    console.log(filters);
 
     getProducts(body);
     setSkip(0);
