@@ -7,13 +7,9 @@ const { Title } = Typography;
 const { TextArea } = Input;
 
 const Continents = [
-  { key: 1, value: "Africa" },
-  { key: 2, value: "Europe" },
-  { key: 3, value: "Asia" },
-  { key: 4, value: "North America" },
-  { key: 5, value: "South America" },
-  { key: 6, value: "Australia" },
-  { key: 7, value: "Antarctica" },
+  { key: 1, value: "Twice" },
+  { key: 2, value: "Japan" },
+  { key: 3, value: "Jazz" },
 ];
 
 function UploadProductPage(props) {

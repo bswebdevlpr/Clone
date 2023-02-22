@@ -35,7 +35,7 @@ function CheckBox(props) {
 
   return (
     <Collapse defaultActiveKey={["1"]}>
-      <Panel header="This is panel header 1" key="1">
+      <Panel header="Items" key="1">
         {renderCheckboxLists()}
       </Panel>
     </Collapse>

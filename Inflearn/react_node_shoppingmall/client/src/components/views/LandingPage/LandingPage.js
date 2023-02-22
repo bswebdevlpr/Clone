@@ -4,7 +4,10 @@ import axios from "axios";
 import { Icon, Col, Card, Row, Carousel } from "antd";
 import ImageSlider from "../../utils/ImageSlider";
 import CheckBox from "./Sections/CheckBox";
-import { continents } from "./Sections/Datas";
+import Radiobox from "./Sections/RadioBox";
+import { continents, price } from "./Sections/Datas";
+
+const { Meta } = Card;
 
 function LandingPage() {
   const [Products, setProducts] = useState([]);
@@ -29,7 +32,7 @@ function LandingPage() {
     return (
       <Col lg={6} md={8} xs={24} key={index}>
         <Card cover={<ImageSlider images={product.images} />}>
-          <meta title={product.title} description={`${product.price}`} />
+          <Meta title={product.title} description={`${product.price}`} />
         </Card>
       </Col>
     );
@@ -71,8 +74,6 @@ function LandingPage() {
       filters: filters,
     };
 
-    console.log(filters);
-
     getProducts(body);
     setSkip(0);
   };
@@ -93,13 +94,23 @@ function LandingPage() {
         </h2>
       </div>
 
-      {/* CHECKBOX */}
-      <CheckBox
-        list={continents}
-        handleFilters={(filters) => handleFilters(filters, "continents")}
-      />
-
-      {/* RADIOBOX */}
+      {/* FILTER */}
+      <Row gutter={[16, 16]}>
+        <Col lg={12} xs={24}>
+          {/* CHECKBOX */}
+          <CheckBox
+            list={continents}
+            handleFilters={(filters) => handleFilters(filters, "continents")}
+          />
+        </Col>
+        <Col lg={12} xs={24}>
+          {/* RADIOBOX */}
+          <Radiobox
+            list={price}
+            handleFilters={(filters) => handleFilters(filters, "price")}
+          />
+        </Col>
+      </Row>
 
       <Row gutter={[16, 16]}>{renderCards}</Row>
 
