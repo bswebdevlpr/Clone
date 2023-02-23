@@ -23,7 +23,7 @@ const price = [
   {
     _id: 2,
     name: "More than $100",
-    array: [100, Infinity],
+    array: [100, 10000000],
   },
 ];
 

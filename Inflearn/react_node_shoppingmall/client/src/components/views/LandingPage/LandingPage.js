@@ -5,6 +5,7 @@ import { Icon, Col, Card, Row, Carousel } from "antd";
 import ImageSlider from "../../utils/ImageSlider";
 import CheckBox from "./Sections/CheckBox";
 import Radiobox from "./Sections/RadioBox";
+import SearchFeature from "./Sections/SearchFeature";
 import { continents, price } from "./Sections/Datas";
 
 const { Meta } = Card;
@@ -18,6 +19,7 @@ function LandingPage() {
     continents: [],
     price: [],
   });
+  const [SearchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     let body = {
@@ -78,12 +80,46 @@ function LandingPage() {
     setSkip(0);
   };
 
+  const handlePrice = (value) => {
+    const data = price;
+    let array = [];
+
+    for (let key in data) {
+      if (data[key]._id === parseInt(value, 10)) {
+        array = data[key].array;
+      }
+    }
+
+    return array;
+  };
+
   const handleFilters = (filters, category) => {
     const newFilters = { ...Filters };
 
     newFilters[category] = filters;
 
+    if (category === "price") {
+      let priceValues = handlePrice(filters);
+      newFilters[category] = priceValues;
+    }
+
     showFilteredResults(newFilters);
+    setFilters(newFilters);
+  };
+
+  const updateSearchTerm = (newSearchTerm) => {
+    setSearchTerm(newSearchTerm);
+
+    let body = {
+      skip: 0,
+      limit: Limit,
+      filters: Filters,
+      searchTerm: newSearchTerm,
+    };
+
+    setSkip(0);
+    setSearchTerm(newSearchTerm);
+    getProducts(body);
   };
 
   return (
@@ -112,10 +148,22 @@ function LandingPage() {
         </Col>
       </Row>
 
+      {/* SEARCH */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          margin: "1rem auto",
+        }}>
+        <SearchFeature refreshFunction={updateSearchTerm} />
+      </div>
+
+      {/* CARDS */}
+
       <Row gutter={[16, 16]}>{renderCards}</Row>
 
       {PostSize >= Limit && (
-        <div style={{ justifyContent: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <button onClick={loadMoreHandler}>더보기</button>
         </div>
       )}
