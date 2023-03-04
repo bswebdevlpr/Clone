@@ -115,12 +115,12 @@ router.post("/addToCart", auth, (req, res) => {
   });
 });
 
-router.get("/removeFrommCart", auth, (req, res) => {
+router.get("/removeFromCart", auth, (req, res) => {
   // 먼저 cart 안 상품을 지워줌
   User.findOneAndUpdate(
     { _id: req.user._id },
     {
-      $pull: { cart: { id: req.query._id } },
+      $pull: { cart: { id: req.query.id } },
     },
     { new: true },
     (err, userInfo) => {

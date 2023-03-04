@@ -23,6 +23,8 @@ function CartPage(props) {
             calculateTotal(res.payload);
           }
         );
+      } else {
+        setTotal(0);
       }
     }
   }, [props.user.userData]);
@@ -38,7 +40,9 @@ function CartPage(props) {
   };
 
   let removeFromCart = (productId) => {
-    dispatch(removeCartItem(productId)).then((res) => {});
+    dispatch(removeCartItem(productId)).then((res) => {
+      // console.log(res);
+    });
   };
 
   return (
