@@ -50,20 +50,18 @@ function LandingPage() {
   });
 
   const getProducts = (body) => {
-    instance
-      .post("/api/product/products", body, { withCredentials: true })
-      .then((res) => {
-        if (res.data.success) {
-          if (body.loadMore) {
-            setProducts([...Products, ...res.data.productInfo]);
-          } else {
-            setProducts(res.data.productInfo);
-          }
-          setPostSize(res.data.postSize);
+    instance.post("/api/product/products", body).then((res) => {
+      if (res.data.success) {
+        if (body.loadMore) {
+          setProducts([...Products, ...res.data.productInfo]);
         } else {
-          alert("Failed to bring products");
+          setProducts(res.data.productInfo);
         }
-      });
+        setPostSize(res.data.postSize);
+      } else {
+        alert("Failed to bring products");
+      }
+    });
   };
 
   const loadMoreHandler = () => {
