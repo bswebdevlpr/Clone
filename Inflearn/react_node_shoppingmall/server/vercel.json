@@ -2,5 +2,5 @@
   "version": 2,
   "name": "inflearn-shoppingmall-server",
   "builds": [{ "src": "./server/index.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "./server/(.*)", "dest": "./server/" }]
+  "routes": [{ "src": "/(.*)", "dest": "/" }]
 }
