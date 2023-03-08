@@ -25,7 +25,12 @@ const connect = mongoose
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*", // 출처 허용 옵션
+    credential: "true", // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
+  })
+);
 
 //to not get any deprecation warning or error
 //support parsing of application/x-www-form-urlencoded post data
