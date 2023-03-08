@@ -10,6 +10,10 @@ import { continents, price } from "./Sections/Datas";
 
 const { Meta } = Card;
 
+const instance = axios.create({
+  baseURL: "https://clone-h1vkmrwaw-bswebdevlpr.vercel.app",
+});
+
 function LandingPage() {
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
@@ -46,18 +50,20 @@ function LandingPage() {
   });
 
   const getProducts = (body) => {
-    axios.post("/api/product/products", body).then((res) => {
-      if (res.data.success) {
-        if (body.loadMore) {
-          setProducts([...Products, ...res.data.productInfo]);
+    instance
+      .post("/api/product/products", body, { withCredentials: true })
+      .then((res) => {
+        if (res.data.success) {
+          if (body.loadMore) {
+            setProducts([...Products, ...res.data.productInfo]);
+          } else {
+            setProducts(res.data.productInfo);
+          }
+          setPostSize(res.data.postSize);
         } else {
-          setProducts(res.data.productInfo);
+          alert("Failed to bring products");
         }
-        setPostSize(res.data.postSize);
-      } else {
-        alert("Failed to bring products");
-      }
-    });
+      });
   };
 
   const loadMoreHandler = () => {
