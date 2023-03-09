@@ -14,7 +14,7 @@ function ImageSlider(props) {
             <div key={index}>
               <img
                 style={{ width: "100%", maxHeight: "150px" }}
-                src={`https://clone-h1vkmrwaw-bswebdevlpr.vercel.app/${image}`}
+                src={`https://clone-swart.vercel.app/${image}`}
               />
             </div>
           );

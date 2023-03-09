@@ -4,7 +4,7 @@ import { Icon } from "antd";
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://clone-h1vkmrwaw-bswebdevlpr.vercel.app",
+  baseURL: "https://clone-swart.vercel.app",
 });
 
 function FileUpload(props) {
@@ -69,7 +69,7 @@ function FileUpload(props) {
           <div onClick={() => deleteHandler(image)} key={index}>
             <img
               style={{ minWidth: "300px", width: "300px", height: "240px" }}
-              src={`https://clone-h1vkmrwaw-bswebdevlpr.vercel.app/${image}`}
+              src={`https://clone-swart.vercel.app/${image}`}
             />
           </div>
         ))}
