@@ -69,3 +69,5 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Server Listening on ${port}`);
 });
+
+module.exports = app;
