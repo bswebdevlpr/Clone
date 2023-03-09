@@ -4,7 +4,7 @@ import FileUpload from "../../utils/FileUpload";
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://clone-h1vkmrwaw-bswebdevlpr.vercel.app",
+  baseURL: "https://clone-swart.vercel.app",
 });
 
 const { Title } = Typography;

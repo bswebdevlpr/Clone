@@ -11,7 +11,7 @@ import { continents, price } from "./Sections/Datas";
 const { Meta } = Card;
 
 const instance = axios.create({
-  baseURL: "https://clone-h1vkmrwaw-bswebdevlpr.vercel.app",
+  baseURL: "https://clone-swart.vercel.app",
 });
 
 function LandingPage() {

@@ -5,7 +5,7 @@ import ProductInfo from "./Sections/ProductInfo";
 import { Row, Col } from "antd";
 
 const instance = axios.create({
-  baseURL: "https://clone-h1vkmrwaw-bswebdevlpr.vercel.app",
+  baseURL: "https://clone-swart.vercel.app",
 });
 
 function DetailProductPage(props) {

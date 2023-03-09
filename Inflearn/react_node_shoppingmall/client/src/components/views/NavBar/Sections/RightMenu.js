@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const instance = axios.create({
-  baseURL: "https://clone-h1vkmrwaw-bswebdevlpr.vercel.app",
+  baseURL: "https://clone-swart.vercel.app",
 });
 
 function RightMenu(props) {
