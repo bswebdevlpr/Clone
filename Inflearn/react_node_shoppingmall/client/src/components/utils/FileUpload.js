@@ -69,7 +69,7 @@ function FileUpload(props) {
           <div onClick={() => deleteHandler(image)} key={index}>
             <img
               style={{ minWidth: "300px", width: "300px", height: "240px" }}
-              src={`http://localhost:5000/${image}`}
+              src={`https://clone-h1vkmrwaw-bswebdevlpr.vercel.app/${image}`}
             />
           </div>
         ))}
