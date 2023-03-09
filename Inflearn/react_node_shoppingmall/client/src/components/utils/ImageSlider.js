@@ -5,14 +5,20 @@ function ImageSlider(props) {
   return (
     <div>
       <Carousel autoplay>
-        {props.images.map((image, index) => (
-          <div key={index}>
-            <img
-              style={{ width: "100%", maxHeight: "150px" }}
-              src={`https://clone-h1vkmrwaw-bswebdevlpr.vercel.app/${image}`}
-            />
-          </div>
-        ))}
+        {props.images.map((image, index) => {
+          console.log(
+            `https://clone-h1vkmrwaw-bswebdevlpr.vercel.app/${image}`,
+            index
+          );
+          return (
+            <div key={index}>
+              <img
+                style={{ width: "100%", maxHeight: "150px" }}
+                src={`https://clone-h1vkmrwaw-bswebdevlpr.vercel.app/${image}`}
+              />
+            </div>
+          );
+        })}
       </Carousel>
     </div>
   );

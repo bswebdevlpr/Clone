@@ -35,7 +35,6 @@ function LandingPage() {
   }, []);
 
   const renderCards = Products.map((product, index) => {
-    console.log(product, index);
     return (
       <Col lg={6} md={8} xs={24} key={index}>
         <Card
