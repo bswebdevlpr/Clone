@@ -3,6 +3,10 @@ import Dropzone from "react-dropzone";
 import { Icon } from "antd";
 import axios from "axios";
 
+const instance = axios.create({
+  baseURL: "https://clone-h1vkmrwaw-bswebdevlpr.vercel.app",
+});
+
 function FileUpload(props) {
   const [Images, setImages] = useState([]);
 
@@ -14,7 +18,7 @@ function FileUpload(props) {
     };
     formData.append("file", files[0]);
 
-    axios.post("/api/product/image", formData, config).then((res) => {
+    instance.post("/api/product/image", formData, config).then((res) => {
       if (res.data.success) {
         setImages([...Images, res.data.filePath]);
         props.refreshFunction([...Images, res.data.filePath]);

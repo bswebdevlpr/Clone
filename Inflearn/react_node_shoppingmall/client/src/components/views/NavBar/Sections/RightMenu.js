@@ -6,11 +6,15 @@ import { USER_SERVER } from "../../../Config";
 import { withRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+const instance = axios.create({
+  baseURL: "https://clone-h1vkmrwaw-bswebdevlpr.vercel.app",
+});
+
 function RightMenu(props) {
   const user = useSelector((state) => state.user);
 
   const logoutHandler = () => {
-    axios.get(`${USER_SERVER}/logout`).then((response) => {
+    instance.get(`${USER_SERVER}/logout`).then((response) => {
       if (response.status === 200) {
         props.history.push("/login");
       } else {

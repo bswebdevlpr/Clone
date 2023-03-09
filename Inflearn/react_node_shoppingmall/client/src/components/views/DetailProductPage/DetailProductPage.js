@@ -4,13 +4,17 @@ import ProductImage from "./Sections/ProductImage";
 import ProductInfo from "./Sections/ProductInfo";
 import { Row, Col } from "antd";
 
+const instance = axios.create({
+  baseURL: "https://clone-h1vkmrwaw-bswebdevlpr.vercel.app",
+});
+
 function DetailProductPage(props) {
   const productId = props.match.params.productId;
 
   const [Product, setProduct] = useState({});
 
   useEffect(() => {
-    axios
+    instance
       .get(`/api/product/products_by_id?id=${productId}&type=single`)
       .then((res) => {
         setProduct(res.data[0]);

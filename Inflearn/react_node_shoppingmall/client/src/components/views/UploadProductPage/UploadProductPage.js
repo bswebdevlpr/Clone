@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Typography, Button, Form, Input } from "antd";
 import FileUpload from "../../utils/FileUpload";
-import Axios from "axios";
+import axios from "axios";
+
+const instance = axios.create({
+  baseURL: "https://clone-h1vkmrwaw-bswebdevlpr.vercel.app",
+});
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -58,7 +62,7 @@ function UploadProductPage(props) {
       images: images,
     };
 
-    Axios.post("/api/product", body).then((res) => {
+    instance.post("/api/product", body).then((res) => {
       if (res.data.success) {
         alert("Upload success");
         props.history.push("/");
