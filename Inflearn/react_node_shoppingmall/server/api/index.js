@@ -34,6 +34,7 @@ app.use(
 
 //to not get any deprecation warning or error
 //support parsing of application/x-www-form-urlencoded post data
+app.use("/", express.static("api"));
 app.use(bodyParser.urlencoded({ extended: true }));
 //to get json data
 // support parsing of application/json type post data
