@@ -6,10 +6,7 @@ function ImageSlider(props) {
     <div>
       <Carousel autoplay>
         {props.images.map((image, index) => {
-          console.log(
-            `https://clone-h1vkmrwaw-bswebdevlpr.vercel.app/${image}`,
-            index
-          );
+          console.log(`https://clone-swart.vercel.app/${image}`, index);
           return (
             <div key={index}>
               <img
