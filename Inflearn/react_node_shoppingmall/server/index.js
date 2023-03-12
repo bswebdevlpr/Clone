@@ -28,7 +28,7 @@ const connect = mongoose
 app.use(
   cors({
     origin: "*", // 출처 허용 옵션
-    credential: "true", // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
+    // credential: "true", // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
   })
 );
 
@@ -45,12 +45,7 @@ app.use("/api/product", require("./routes/product"));
 
 //use this to show the image you have in node js server to client (react js)
 //https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
-app.use("/uploads", express.static("./uploads"));
-
-app.use("/test/test", express.static("test"));
-app.get("/test", (req, res) => {
-  res.send("This is test page.");
-});
+app.use("/uploads", express.static("uploads"));
 
 // // Serve static assets if in production
 // if (process.env.NODE_ENV === "production") {
