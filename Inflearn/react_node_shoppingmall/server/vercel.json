@@ -9,10 +9,7 @@
     }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "index.js" },
-    {
-      "src": "/(.+)",
-      "dest": "uploads/$1"
-    }
+    { "src": "/(.*)", "dest": "/" },
+    { "src": "/uploads/(.+)", "dest": "uploads/$1" }
   ]
 }
