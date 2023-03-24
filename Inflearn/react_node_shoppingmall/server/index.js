@@ -65,7 +65,13 @@ const port = process.env.PORT || 5000;
 app.use("/uploads", (req, res) => {
   readFile(`uploads/${req.path}`, (err, data) => {
     if (err) {
-      res.send("Sibal 왜안돼");
+      res.send({
+        msg: "Sibal 왜안돼",
+        path: req.path,
+        url: req.url,
+        originalUrl: req.originalUrl,
+        headersHost: req.headers.host,
+      });
     }
     res.send(data);
   });
