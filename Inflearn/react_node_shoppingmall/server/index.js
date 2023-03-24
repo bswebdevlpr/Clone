@@ -71,6 +71,7 @@ app.use("/uploads", (req, res) => {
         originalUrl: req.originalUrl,
         headersHost: req.headers.host,
         err,
+        nowPath: __dirname,
       });
     }
     res.send(data);
