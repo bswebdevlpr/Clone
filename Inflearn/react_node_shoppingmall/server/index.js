@@ -67,10 +67,12 @@ app.use("/uploads", (req, res) => {
     if (err) {
       res.send({
         msg: "Sibal 왜안돼",
+        readFileUrl: `uploads${req.path}`,
         path: req.path,
         url: req.url,
         originalUrl: req.originalUrl,
         headersHost: req.headers.host,
+        err,
       });
     }
     res.send(data);
