@@ -61,8 +61,8 @@ app.use("/api/product", require("./routes/product"));
 const port = process.env.PORT || 5000;
 
 app.use("/uploads", (req, res) => {
-  console.log("test");
-  res.json({ msg: "uploads connection test" });
+  // readFile(`uploads/`, 'utf-8')
+  res.json({ msg: `${req.path}` });
 });
 
 //get for every Route
