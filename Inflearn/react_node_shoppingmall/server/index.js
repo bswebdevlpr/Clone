@@ -61,8 +61,12 @@ app.use("/api/product", require("./routes/product"));
 const port = process.env.PORT || 5000;
 
 app.use("/uploads", (req, res) => {
-  // readFile(`uploads/`, 'utf-8')
-  res.json({ msg: `${req.url}` });
+  readFile(`uploads/${req.path}`, (err, data) => {
+    if (err) {
+      res.send("Sibal 왜안돼");
+    }
+    res.send(data);
+  });
 });
 
 //get for every Route
