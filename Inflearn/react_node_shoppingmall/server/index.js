@@ -40,8 +40,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use("/uploads", express.static("./uploads"));
-
 app.use("/api/users", require("./routes/users"));
 app.use("/api/product", require("./routes/product"));
 
@@ -61,6 +59,10 @@ app.use("/api/product", require("./routes/product"));
 // }
 
 const port = process.env.PORT || 5000;
+
+app.use("/uploads", (req, res) => {
+  res.json({ msg: "uploads connection test" });
+});
 
 //get for every Route
 app.get("/", (req, res) => {
