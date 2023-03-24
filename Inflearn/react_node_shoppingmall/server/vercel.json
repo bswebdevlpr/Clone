@@ -8,10 +8,8 @@
       "use": "@vercel/static"
     }
   ],
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api"
-    }
+  "routes": [
+    { "src": "/(.*)", "dest": "/" },
+    { "src": "/uploads/(.+)", "dest": "uploads/$1" }
   ]
 }
