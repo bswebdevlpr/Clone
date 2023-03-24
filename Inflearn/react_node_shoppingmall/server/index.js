@@ -61,8 +61,9 @@ app.use("/api/product", require("./routes/product"));
 
 const port = process.env.PORT || 5000;
 app.use("/uploads", (req, res) => {
-  fs.readFileSync(`./uploads${req.path}`, (err, data) => {
+  fs.readFile(`./uploads${req.path}`, (err, data) => {
     if (err) {
+      const exist = fs.existSync("./uploads");
       res.send({
         readFileUrl: `./uploads${req.path}`,
         path: req.path,
@@ -71,6 +72,7 @@ app.use("/uploads", (req, res) => {
         headersHost: req.headers.host,
         err,
         __dirname,
+        exist,
       });
     }
     res.send(data);
