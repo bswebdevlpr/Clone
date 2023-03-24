@@ -62,7 +62,7 @@ const port = process.env.PORT || 5000;
 
 app.use("/uploads", (req, res) => {
   // readFile(`uploads/`, 'utf-8')
-  res.json({ msg: `${req.path}` });
+  res.json({ msg: `${req.url}` });
 });
 
 //get for every Route
