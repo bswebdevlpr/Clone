@@ -63,10 +63,9 @@ app.use("/api/product", require("./routes/product"));
 const port = process.env.PORT || 5000;
 
 app.use("/uploads", (req, res) => {
-  readFile(`/uploads${req.path}`, (err, data) => {
+  readFile(`./uploads${req.path}`, (err, data) => {
     if (err) {
       res.send({
-        msg: "Sibal 왜안돼",
         readFileUrl: `uploads${req.path}`,
         path: req.path,
         url: req.url,
