@@ -41,6 +41,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+app.use("/uploads", express.static("uploads"));
+
 app.use("/api/users", require("./routes/users"));
 app.use("/api/product", require("./routes/product"));
 
@@ -60,22 +62,6 @@ app.use("/api/product", require("./routes/product"));
 // }
 
 const port = process.env.PORT || 5000;
-app.use("/uploads", (req, res) => {
-  fs.readFile(`./uploads${req.path}`, (err, data) => {
-    if (err) {
-      res.send({
-        readFileUrl: `./uploads${req.path}`,
-        path: req.path,
-        url: req.url,
-        originalUrl: req.originalUrl,
-        headersHost: req.headers.host,
-        err,
-        __dirname,
-      });
-    }
-    res.send(data);
-  });
-});
 
 //get for every Route
 app.get("/", (req, res) => {
