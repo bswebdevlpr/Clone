@@ -11,8 +11,5 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/" },
-    { "src": "/uploads/(.+)", "dest": "uploads/$1" }
-  ]
+  "routes": [{ "src": "/(.*)", "dest": "/" }]
 }
