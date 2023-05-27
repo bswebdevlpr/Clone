@@ -33,6 +33,7 @@ app.use(
   })
 );
 
+// 클라이언트에서 전송되는 데이터를 서버에서 분석해서 가져올 수 있기 위해 사용.
 //to not get any deprecation warning or error
 //support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
