@@ -10,6 +10,7 @@ import {
   ON_SUCCESS_BUY,
 } from "./types";
 import { USER_SERVER } from "../components/Config.js";
+// /api/users
 
 export function registerUser(dataToSubmit) {
   const request = axios
