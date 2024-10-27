@@ -1,0 +1,51 @@
+css 모듈은 각 컴포넌트마다 유니크한 class명을 만들기 때문에 스타일 충돌을 걱정할 필요가 없다
+
+
+next/font 모듈을 쓰면 빌드타임에 폰트 파일을 다운로드하여 static assets에 적용한다. 
+nextjs가 자동으로 폰트 최적화를 해주므로 유저는 폰트를 위한 추가적인 네트워크 요청을 하지 않아도 된다.
+
+
+
+nextJS에서 layout.tsx 파일을 통해 여러 페이지에서 공유되는 UI를 만들 수 있다.
+- 해당 파일에 import되는 모든 컴포넌트는 layout의 일부가 된다.
+- layout은 chlidren prop을 받는데, 이는 다른 페이지 또는 레이아웃이 될 수 있다. 
+
+nextjs에서 layout을 사용하는 이점은 navigation에 있는데, 페이지 컴포넌트만 업데이트하고 layout은 리렌더링 하지 않는다. 
+이것을 partial rendering이라고 부른다.
+
+
+
+navigation을 최적화한 이유
+: a 태그를 통한 navigation은 페이지를 전부 refresh 하기 때문
+
+nextjs는 자동으로 코드를 route segment로 분리하는데, 이것은 브라우저가 최초 로딩 시 모든 코드를 로딩하는 전통적인 React SPA와 다른점이다.
+Splitting code by routes는 각 페이지가 분리되어 있음을 의미한다. 만약 특정 페이지에서 에러가 발생해도 나머지 페이지에는 지장이 없다.
+게다가 프로덕션 환경에서 Link 컴포넌트는 언제든지 브라우저 뷰포트에 나타나는데, NextJS는 백그라운드에서 자동으로 linked route를 prefetch 하기 때문이다.
+
+
+
+Nextjs에서 streaming을 구현하는 방법
+1. 페이지 레벨에서 loading.tsx 파일을 통해서
+2. 특정 컴포넌트 Suspense를 통해서
+
+loading.tsx 파일에 추가한 모든 UI는 static 파일에 임베디드된다.
+
+app폴더 경로에 ()괄호로 폴더명을 지으면 해당 폴더명은 URL path에 포함되지 않는다.
+즉, dashboard/(overview)/page.tsx의 경로는 /dashboard가 된다.
+
+
+
+URL search params의 장점
+1. Bookmarkable and Shareable URLs: URL내에 search parameter가 있기 때문에 유저는 현재 state를 북마크할 수 있다.
+2. Server-Side Rendering and Initial Load: URL 파라미터는 서버에서 최초 렌더링에 바로 사용할 수 있다.
+3. Analytics and Tracking
+
+Debouncing
+: 잦은 요청주기를 제한하는 방법
+
+
+
+Server Action이란?
+React Server Actions는 비동기 코드를 API 엔드포인트에 요청하지 않고 서버에서 바로 실행시킬 수 있게 해준다.
+
+자바스크립트가 아직 로드되지 않았거나 실패했어도 유저와 상호작용할 수 있게 해준다.
