@@ -49,3 +49,6 @@ Server Action이란?
 React Server Actions는 비동기 코드를 API 엔드포인트에 요청하지 않고 서버에서 바로 실행시킬 수 있게 해준다.
 
 자바스크립트가 아직 로드되지 않았거나 실패했어도 유저와 상호작용할 수 있게 해준다.
+
+Server Actions는 NextJS 캐싱과 깊게 연관되어 있는데, form이 server action을 통해 submit되면 데이터를 mutate 할수 있을 뿐만 아니라
+관련된 캐시를 revalidatePath나 revalidateTag 같은 API를 통해 revalidate 할 수 있다.
